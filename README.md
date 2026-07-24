@@ -62,3 +62,4 @@ This is the tool's real limitation surfacing on real data, not a cherry-picked p
 - English only. Syllable counting is heuristic.
 - The 60-word window assumes 140 wpm narration; adjust `HOOK_WORDS` for faster pacing.
 - The `--ai` pass depends on a third-party model whose behaviour changes without notice. The migration from `gemini-2.0-flash` (retired June 2026) to `gemini-2.5-flash` is recorded in the commit history.
+- The `--ai` pass only receives the 60-word window, not the full script. It cannot distinguish a deliberate cliffhanger from the window's own truncation, and will sometimes critique the cutoff as an editorial flaw.
