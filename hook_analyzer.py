@@ -97,10 +97,10 @@ def ai_critique(hook: str) -> str:
         f"first sentence.\n\nHOOK:\n{hook}"
     )
     r = requests.post(
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent",
-        params={"key": key},
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+        headers={"x-goog-api-key": key},
         json={"contents": [{"parts": [{"text": prompt}]}],
-              "generationConfig": {"maxOutputTokens": 400}},
+              "generationConfig": {"maxOutputTokens": 1200, "thinkingConfig": {"thinkingBudget": 0}}},
         timeout=60,
     )
     r.raise_for_status()
@@ -139,3 +139,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
